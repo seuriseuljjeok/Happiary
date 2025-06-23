@@ -1,7 +1,7 @@
 ---
 name: HAPPIARY_ISSUE_TEMPLATE
 about: explain an idea for this issue
-title: "[FEAT] (#)"
+title: "[FEAT] "
 labels: "⚒️ feature"
 assignees: seuriseuljjeok
 
