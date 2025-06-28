@@ -7,7 +7,7 @@
 
 import ProjectDescription
 
-public func app(_ name: String) -> Project {
+public func makeApp(_ name: String, _ target: [Target]) -> Project {
     Project(
         name: name,
         settings: .settings(
@@ -15,9 +15,6 @@ public func app(_ name: String) -> Project {
                 "DEVELOPMENT_TEAM": "72B557RJ7S",
             ]
         ),
-        targets: [
-            appTarget(name),
-            appTestTarget(name)
-        ]
+        targets: target
     )
 }

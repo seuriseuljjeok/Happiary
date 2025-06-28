@@ -1,4 +1,17 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let project = app("Happiary")
+private let targets: [Target] = [
+    makeModular(
+        .App,
+        .init(
+            products: .app,
+            dependencies: ModuleLayer.App.dependencies,
+            infoPlist: .extendingDefault(
+                with: ["UILaunchScreen":""])
+        )
+    ),
+    makeTest("App")
+]
+
+let project: Project = makeApp(ModuleLayer.App.rawValue, targets)
