@@ -36,6 +36,9 @@ public struct ContentView: View {
                 print("소확행 기록하기")
             }
             
+            Divider()
+                .customeDividerStyle()
+            
             HappiaryLogBox(
                 title: "슈퍼문 자만추 해버리기",
                 date: "2025.04.09",
