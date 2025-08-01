@@ -9,6 +9,8 @@ public struct ContentView: View {
     @State private var text1 = ""
     
     @State private var isEnable = true
+    
+    @State private var isSelected = false
 
     public var body: some View {
         VStack {
@@ -43,6 +45,19 @@ public struct ContentView: View {
                 title: "슈퍼문 자만추 해버리기",
                 date: "2025.04.09",
                 typeImage: .pitapat
+            )
+            
+            HappiaryImageTextButton(
+                isSelected: $isSelected,
+                isEnable: true,
+                typeImage: .sweat,
+                type: "두근두근 설레는"
+            )
+            
+            HappiaryImageTextButton(
+                isSelected: $isSelected,
+                typeImage: .warm,
+                type: "햇살처럼 따뜻한"
             )
         }
         .background(Color.lightPink)
