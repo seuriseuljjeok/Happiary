@@ -36,9 +36,15 @@ public struct ContentView: View {
                 print("소확행 기록하기")
             }
             
-            Image(uiImage: DesignSystemImages.Image.strokedCheckmark)
+            HappiaryLogBox(
+                title: "슈퍼문 자만추 해버리기",
+                date: "2025.04.09",
+                typeImage: .pitapat
+            )
         }
+        .background(Color.lightPink)
     }
+    
 }
 
 
