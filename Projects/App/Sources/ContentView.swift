@@ -3,9 +3,12 @@ import SwiftUI
 import DesignSystem
 
 public struct ContentView: View {
+    
     public init() {}
     
     @State private var text1 = ""
+    
+    @State private var isEnable = true
 
     public var body: some View {
         VStack {
@@ -21,6 +24,17 @@ public struct ContentView: View {
                 prompt: Text("이름을 입력해주세요").foregroundColor(.lightGray)
             )
             .customTextFieldStyle()
+            
+            HappiaryRoundedButton(
+                isEnable: $isEnable,
+                horizontalPadding: 116,
+                height: 30,
+                title: "소확행 기록하기",
+                fontSize: 14,
+                cornerRadius: 12
+            ) {
+                print("소확행 기록하기")
+            }
             
             Image(uiImage: DesignSystemImages.Image.strokedCheckmark)
         }
