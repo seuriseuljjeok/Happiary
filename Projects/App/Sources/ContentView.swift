@@ -13,56 +13,70 @@ public struct ContentView: View {
     @State private var isSelected = false
 
     public var body: some View {
-        VStack {
-            Text("안녕하세요오반갑습니다")
-                .customTextStyle(
-                    fontSize: 15,
-                    fontColor: .accentCoral
+        ZStack {
+            Color.lightPink.ignoresSafeArea()
+            
+            VStack {
+                Text("안녕하세요오반갑습니다")
+                    .customTextStyle(
+                        fontSize: 15,
+                        fontColor: .accentCoral
+                    )
+                
+                TextField(
+                    "",
+                    text: $text1,
+                    prompt: Text("이름을 입력해주세요").foregroundColor(.lightGray)
                 )
-            
-            TextField(
-                "",
-                text: $text1,
-                prompt: Text("이름을 입력해주세요").foregroundColor(.lightGray)
-            )
-            .customTextFieldStyle()
-            
-            HappiaryRoundedButton(
-                isEnable: $isEnable,
-                horizontalPadding: 116,
-                height: 30,
-                title: "소확행 기록하기",
-                fontSize: 14,
-                cornerRadius: 12
-            ) {
-                print("소확행 기록하기")
+                .customTextFieldStyle()
+                
+                HappiaryRoundedButton(
+                    isEnable: $isEnable,
+                    horizontalPadding: 116,
+                    height: 30,
+                    title: "소확행 기록하기",
+                    fontSize: 14,
+                    cornerRadius: 12
+                ) {
+                    print("소확행 기록하기")
+                }
+                
+                Divider()
+                    .customeDividerStyle()
+                
+                HappiaryLogBox(
+                    title: "슈퍼문 자만추 해버리기",
+                    date: "2025.04.09",
+                    typeImage: .pitapat
+                )
+                
+                HappiaryImageTextButton(
+                    isSelected: $isSelected,
+                    isEnable: true,
+                    typeImage: .sweat,
+                    type: "두근두근 설레는"
+                )
+                
+                HappiaryImageTextButton(
+                    isSelected: $isSelected,
+                    typeImage: .warm,
+                    type: "햇살처럼 따뜻한"
+                )
             }
-            
-            Divider()
-                .customeDividerStyle()
-            
-            HappiaryLogBox(
-                title: "슈퍼문 자만추 해버리기",
-                date: "2025.04.09",
-                typeImage: .pitapat
-            )
-            
-            HappiaryImageTextButton(
-                isSelected: $isSelected,
-                isEnable: true,
-                typeImage: .sweat,
-                type: "두근두근 설레는"
-            )
-            
-            HappiaryImageTextButton(
-                isSelected: $isSelected,
-                typeImage: .warm,
-                type: "햇살처럼 따뜻한"
+        }
+        .overlay(alignment: .top) {
+            HappiaryNavigationBar(
+                center: {
+                    Text("Happiary")
+                        .customTextStyle(alignment: .center, fontSize: 36)
+                },
+                right: {
+                    Image.icPlus
+                        .customImageStyle(size: 20)
+                }
             )
         }
-        .background(Color.lightPink)
     }
-    
 }
 
 
