@@ -1,10 +1,12 @@
 import SwiftUI
 
+import ComposableArchitecture
+import Core
 import DesignSystem
 
 public struct ContentView: View {
-    
-    public init() {}
+        
+    let store: StoreOf<TabStore>
     
     @State private var text1 = ""
     
@@ -82,6 +84,6 @@ public struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(store: Store(initialState: TabStore.State(selectedTab: .home), reducer: { TabStore() }))
     }
 }
