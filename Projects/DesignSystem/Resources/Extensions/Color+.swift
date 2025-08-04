@@ -31,5 +31,11 @@ public extension Color {
     static var lightYellow = Color(.lightYellow)
     
     static var strokeGray = Color(.strokeGray)
+    
+    static var linearBlue = Color(.linearBlue)
+    
+    static var linearPink = Color(.linearPink)
+
+    static var tabBarBg = Color(.tabBarBg)
 
 }
