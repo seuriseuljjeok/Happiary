@@ -13,6 +13,8 @@ public struct ContentView: View {
     @State private var isEnable = true
     
     @State private var isSelected = false
+    
+    @State private var isToggle = false
 
     public var body: some View {
         ZStack {
@@ -64,6 +66,14 @@ public struct ContentView: View {
                     typeImage: .warm,
                     type: "햇살처럼 따뜻한"
                 )
+                
+                HappiarySettingMenuBox(title: "기록 알림 설정", menuType: .toggle(isOn: $isToggle))
+                
+                HappiarySettingMenuBox(title: "기록 알림 설정", menuType: .button(image: .icRightArrow, action: { print("기록 알림 설정") }))
+                
+                HappiarySettingMenuBox(title: "기록 알림 설정", menuType: .none)
+
+
             }
         }
         .overlay(alignment: .top) {
@@ -74,7 +84,7 @@ public struct ContentView: View {
                 },
                 right: {
                     Image.icPlus
-                        .customImageStyle(size: 20)
+                        .customImageStyle(width: 20, height: 20)
                 }
             )
         }
