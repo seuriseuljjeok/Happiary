@@ -37,5 +37,7 @@ public extension Color {
     static var linearPink = Color(.linearPink)
 
     static var tabBarBg = Color(.tabBarBg)
+    
+    static var modalBeige = Color(.modalBeige)
 
 }

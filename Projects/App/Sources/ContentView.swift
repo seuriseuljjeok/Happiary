@@ -18,7 +18,7 @@ public struct ContentView: View {
 
     public var body: some View {
         ZStack {
-            Color.lightPink.ignoresSafeArea()
+            HappiaryBackgroundView()
             
             VStack {
                 Text("안녕하세요오반갑습니다")
@@ -74,6 +74,14 @@ public struct ContentView: View {
                 HappiarySettingMenuBox(title: "기록 알림 설정", menuType: .none)
 
 
+            }
+            
+            HappiaryModal(
+                mainTitle: "데이터를 초기화 하시겠어요?",
+                subTitle: "한 번 초기화하면 다시 되돌릴 수 없어요",
+                rightButtonText: "초기화"
+            ) {
+                print("초기화")
             }
         }
         .overlay(alignment: .top) {
