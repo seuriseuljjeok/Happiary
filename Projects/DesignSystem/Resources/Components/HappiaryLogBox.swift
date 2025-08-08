@@ -45,7 +45,7 @@ public struct HappiaryLogBox: View {
             
             typeImage
                 .resizable()
-                .customImageStyle(size: 34)
+                .customImageStyle(width: 34, height: 34)
                 .padding(.trailing, 20)
         }
         .frame(height: 95)

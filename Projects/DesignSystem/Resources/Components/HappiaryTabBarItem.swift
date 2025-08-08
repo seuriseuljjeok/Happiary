@@ -33,7 +33,7 @@ public struct HappiaryTabBarItem: View {
     public var body: some View {
         VStack(alignment: .center, spacing: 7) {
             icon
-                .customImageStyle(size: 18)
+                .customImageStyle(width: 18, height: 18)
             
             Text(title)
                 .customTextStyle(

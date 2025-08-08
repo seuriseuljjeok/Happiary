@@ -38,7 +38,7 @@ public struct HappiaryImageTextButton: View {
         HStack(alignment: .center, spacing: 7) {
             typeImage
                 .resizable()
-                .customImageStyle(size: 13)
+                .customImageStyle(width: 13, height: 13)
                 .padding(.leading, 10)
                 .padding(.vertical, 9)
             

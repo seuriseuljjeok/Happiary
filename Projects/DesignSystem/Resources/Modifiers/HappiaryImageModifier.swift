@@ -9,7 +9,9 @@ import SwiftUI
 
 struct HappiaryImageModifier: ViewModifier {
     
-    let size: CGFloat
+    let width: CGFloat
+    
+    let height: CGFloat
     
     let bgColor: Color
     
@@ -17,7 +19,7 @@ struct HappiaryImageModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .frame(width: size, height: size)
+            .frame(width: width, height: height)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .background(bgColor)
             .aspectRatio(contentMode: .fit)
@@ -28,13 +30,15 @@ struct HappiaryImageModifier: ViewModifier {
 extension View {
     
     public func customImageStyle(
-        size: CGFloat,
+        width: CGFloat,
+        height: CGFloat,
         bgColor: Color = .white.opacity(0),
         cornerRadius: CGFloat = 0
     ) -> some View {
         self.modifier(
             HappiaryImageModifier(
-                size: size,
+                width: width,
+                height: height,
                 bgColor: bgColor,
                 cornerRadius: cornerRadius
             )
