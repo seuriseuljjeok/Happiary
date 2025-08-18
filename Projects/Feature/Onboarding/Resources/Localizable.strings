@@ -1,0 +1,22 @@
+//
+//  Localizable.strings
+//  Onboarding
+//
+//  Created by 윤희슬 on 8/11/25.
+//
+
+"splash_title" = "소소하지만 확실한\n나만의 행복을 담는 공간";
+
+"first_main_title" = "작고 소중한\n순간들을 기록";
+
+"first_sub_title" = "행복했던 그 순간을 기록해보세요";
+
+"second_main_title" = "기억을 모아보면\n더 선명해져요";
+
+"second_sub_title" = "모인 순간들을 통해\n나를 알아가는 즐거움을 느껴보세요";
+
+"third_main_title" = "시작해볼까요?";
+
+"third_sub_title" = "지금부터 오늘 하루\n나만의 행복을 남겨보세요";
+
+"go_to_record" = "기록하러 가기";
