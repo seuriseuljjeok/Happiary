@@ -17,6 +17,10 @@ struct HappiaryTextModifier: ViewModifier {
     
     let fontColor: Color
     
+    let lineLimit: Int
+    
+    let multiLineAlignment: TextAlignment
+    
     let padding: EdgeInsets
     
     func body(content: Content) -> some View {
@@ -24,6 +28,8 @@ struct HappiaryTextModifier: ViewModifier {
             .frame(width: width, alignment: alignment)
             .font(.poor(fontSize))
             .foregroundStyle(fontColor)
+            .lineLimit(lineLimit)
+            .multilineTextAlignment(multiLineAlignment)
             .padding(padding)
     }
     
@@ -36,6 +42,8 @@ extension View {
         alignment: Alignment = .leading,
         fontSize: CGFloat,
         fontColor: Color = Color.charcolGray,
+        lineLimit: Int = 1,
+        multiLineAlignment: TextAlignment = .leading,
         padding: EdgeInsets = EdgeInsets(.zero)
     ) -> some View {
         self.modifier(
@@ -44,6 +52,8 @@ extension View {
                 alignment: alignment,
                 fontSize: fontSize,
                 fontColor: fontColor,
+                lineLimit: lineLimit,
+                multiLineAlignment: multiLineAlignment,
                 padding: padding
             )
         )
