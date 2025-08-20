@@ -9,55 +9,61 @@ import Foundation
 
 import ComposableArchitecture
 
-public enum SwipeDirection {
-    
-    case next
-    
-    case previous
-    
-}
 
 public struct OnboardingStore: Reducer {
-    
-    public init() {}
     
     public struct State: Equatable {
         
         public var currentStep: Int = 0
         
+        public var dragOffset: CGFloat = 0
+        
         public let totalSteps: Int = 3
         
-        public var moveToNextStep: SwipeDirection = .next
+        public var isLastStep: Bool = false
         
-        public var moveToPreviousStep: SwipeDirection = .previous
+        public init(currentStep: Int, dragOffset: CGFloat, isLastStep: Bool) {
+            self.currentStep = currentStep
+            self.dragOffset = dragOffset
+            self.isLastStep = isLastStep
+        }
                 
     }
     
     public enum Action: Equatable {
-                
-        case swipe(SwipeDirection)
+        
+        case onSwipe(CGFloat)
+        
+        case endSwipe(CGFloat)
+        
+        case tap
         
         case goToMainTab
         
     }
     
+    public init() {}
+    
     public var body: some ReducerOf<Self> {
                 
         Reduce { state, action in
-            switch action {                
-            case .swipe(let direction):
-                switch direction {
-                case .next:
-                    print("move to next")
-                    if state.currentStep < state.totalSteps - 1 {
-                        state.currentStep += 1
-                    }
-                case .previous:
-                    print("move to previous")
-                    if state.currentStep > 0 {
-                        state.currentStep -= 1
-                    }
+            switch action {
+            case .onSwipe(let dragOffset):
+                state.dragOffset = dragOffset
+                return .none
+                
+            case .endSwipe(let width):
+                if state.dragOffset < -width / 4 && state.currentStep < state.totalSteps - 1 {
+                    state.currentStep += 1
+                } else if state.dragOffset > width / 4 && state.currentStep > 0 {
+                    state.currentStep -= 1
+                } else if state.currentStep == 2 {
+                    state.isLastStep = true
                 }
+                state.dragOffset = 0
+                return .none
+                
+            case .tap:
                 return .none
                 
             case .goToMainTab:
