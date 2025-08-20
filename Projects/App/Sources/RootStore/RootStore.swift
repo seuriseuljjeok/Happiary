@@ -18,14 +18,24 @@ public struct RootStore: Reducer {
     // root 상태
     public struct State: Equatable {
         
-        var hasSeenOnboarding: Bool = false    // 온보딩 여부
+        var hasSeenSplash: Bool = false         // 스플래시 여부
         
-        var tabState: TabStore.State? = nil  // 탭 상태
+        var hasSeenOnboarding: Bool = false     // 온보딩 여부
+        
+        var tabState: TabStore.State? = nil     // 탭 상태
+        
+        public init(hasSeenSplash: Bool, hasSeenOnboarding: Bool, tabState: TabStore.State? = nil) {
+            self.hasSeenSplash = hasSeenSplash
+            self.hasSeenOnboarding = hasSeenOnboarding
+            self.tabState = tabState
+        }
         
     }
     
     // root에서 받을 액션
     public enum Action {
+        
+        case splashCompleted
         
         case onboardingCompleted
         
@@ -39,6 +49,11 @@ public struct RootStore: Reducer {
         
         Reduce { state, action in
             switch action {
+            case .splashCompleted:
+                UserDefaults.standard.set(true, forKey: "hasSeenSplash")
+                state.hasSeenSplash = true
+                return .none
+                
             case .onboardingCompleted:
                 UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
                 state.hasSeenOnboarding = true

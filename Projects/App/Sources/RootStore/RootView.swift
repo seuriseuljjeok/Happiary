@@ -16,22 +16,36 @@ public struct RootView: View {
     
     public let store: StoreOf<RootStore>
     
+    let onboardingStore: StoreOf<OnboardingStore> = StoreOf<OnboardingStore>(
+        initialState: OnboardingStore.State(
+            currentStep: 0,
+            dragOffset: 0,
+            isLastStep: false
+        ),
+        reducer: { OnboardingStore()}
+    )
+    
     public init(store: StoreOf<RootStore>) {
         self.store = store
     }
     
     public var body: some View {
+        
         WithViewStore(store, observe: { $0 }) { viewStore in
             if viewStore.hasSeenOnboarding, let tabState = viewStore.tabState {
-                TabView(
+                MainTabView(
                     store: store.scope(
                         state: \.tabState!,
                         action: RootStore.Action.tab
                     )
                 )
             } else {
-                OnboardingView {
-                    viewStore.send(.onboardingCompleted)
+                if !viewStore.hasSeenSplash {
+                    SplashView() {
+                        viewStore.send(.splashCompleted)
+                    }
+                } else {
+                    OnboardingView(store: onboardingStore)
                 }
             }
         }
