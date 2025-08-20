@@ -12,7 +12,7 @@ import DesignSystem
 import Onboarding
 
 
-public struct TabView: View {
+public struct MainTabView: View {
     
     // Step 4. Feature를 갖는 Store 생성
     // Action을 처리하여 State를 업데이트하고, 이러한 효과들로부터의 데이터를 시스템으로 다시 피드백할 수 있는 객체
