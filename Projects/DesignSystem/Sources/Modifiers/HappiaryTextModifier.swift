@@ -24,8 +24,10 @@ struct HappiaryTextModifier: ViewModifier {
     let padding: EdgeInsets
     
     func body(content: Content) -> some View {
+        let safeWidth = width.isFinite ? width : nil
+
         content
-            .frame(width: width, alignment: alignment)
+            .frame(width: safeWidth, alignment: alignment)
             .font(.poor(fontSize))
             .foregroundStyle(fontColor)
             .lineLimit(lineLimit)

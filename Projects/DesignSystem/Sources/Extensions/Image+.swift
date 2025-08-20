@@ -50,5 +50,9 @@ public extension Image {
     static var selectedSetting = Image(.selectedSetting)
 
     static var unselectedSetting = Image(.unselectedSetting)
+    
+    static var firstOnboarding = Image(.firstOnboarding)
+    
+    static var secondOnboarding = Image(.secondOnboarding)
 
 }
