@@ -1,18 +1,18 @@
 //
-//  TabReducer.swift
-//  App
+//  TabView.swift
+//  Feature
 //
-//  Created by 윤희슬 on 8/4/25.
+//  Created by 윤희슬 on 8/18/25.
 //
 
 import SwiftUI
 
 import ComposableArchitecture
-import Core
 import DesignSystem
+import Onboarding
 
 
-public struct TabBarView: View {
+public struct MainTabView: View {
     
     // Step 4. Feature를 갖는 Store 생성
     // Action을 처리하여 State를 업데이트하고, 이러한 효과들로부터의 데이터를 시스템으로 다시 피드백할 수 있는 객체
@@ -30,11 +30,13 @@ public struct TabBarView: View {
                 // background
                 HappiaryBackgroundView()
                 
-                // content
-                selectedTabView(viewStore)
-                
-                // tabbar
-                tabBarView(viewStore)
+                VStack(spacing: 0) {
+                    // content
+                    selectedTabView(viewStore)
+                    
+                    // tabbar
+                    tabView(viewStore)
+                }
             }
         }
     }
@@ -53,12 +55,12 @@ public struct TabBarView: View {
 //                IfLetStore(self.store.scope(state: \.log, action: { .log($0) })) {
 //                    LogView(store: $0)
 //                }
-//                
+//
 //            case .archive:
 //                IfLetStore(self.store.scope(state: \.archive, action: { .archive($0) })) {
 //                    ArchiveView(store: $0)
 //                }
-//                
+//
 //            case .setting:
 //                IfLetStore(self.store.scope(state: \.setting, action: { .setting($0) })) {
 //                    SettingView(store: $0)
@@ -68,7 +70,7 @@ public struct TabBarView: View {
     }
     
     @ViewBuilder
-    private func tabBarView(_ viewStore: ViewStoreOf<TabStore>) -> some View {
+    private func tabView(_ viewStore: ViewStoreOf<TabStore>) -> some View {
         HStack(alignment: .center, spacing: 12) {
             ForEach(Tab.allCases, id: \.self) { tab in
                 let isSelected = viewStore.selectedTab == tab
@@ -85,6 +87,7 @@ public struct TabBarView: View {
         }
         .background(Color.tabBarBg)
         .padding(.horizontal, 20)
+        .padding(.top, 10)
     }
     
 }

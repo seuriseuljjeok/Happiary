@@ -39,7 +39,8 @@ public struct HappiaryTabBarItem: View {
                 .customTextStyle(
                     alignment: .center,
                     fontSize: 12,
-                    fontColor: isSelected ? .accentCoral : .deepBrown
+                    fontColor: isSelected ? .accentCoral : .deepBrown,
+                    padding: EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0)
                 )
         }
         .frame(width: 75, height: 54)
