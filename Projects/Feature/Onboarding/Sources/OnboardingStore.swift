@@ -17,15 +17,10 @@ public struct OnboardingStore: Reducer {
         public var currentStep: Int = 0
         
         public var dragOffset: CGFloat = 0
-        
-        public let totalSteps: Int = 3
-        
-        public var isLastStep: Bool = false
-        
-        public init(currentStep: Int, dragOffset: CGFloat, isLastStep: Bool) {
+                        
+        public init(currentStep: Int, dragOffset: CGFloat) {
             self.currentStep = currentStep
             self.dragOffset = dragOffset
-            self.isLastStep = isLastStep
         }
                 
     }
@@ -35,9 +30,7 @@ public struct OnboardingStore: Reducer {
         case onSwipe(CGFloat)
         
         case endSwipe(CGFloat)
-        
-        case tap
-        
+                
         case goToMainTab
         
     }
@@ -53,17 +46,12 @@ public struct OnboardingStore: Reducer {
                 return .none
                 
             case .endSwipe(let width):
-                if state.dragOffset < -width / 4 && state.currentStep < state.totalSteps - 1 {
+                if state.dragOffset < -width / 4 && state.currentStep < 2 {
                     state.currentStep += 1
                 } else if state.dragOffset > width / 4 && state.currentStep > 0 {
                     state.currentStep -= 1
-                } else if state.currentStep == 2 {
-                    state.isLastStep = true
                 }
                 state.dragOffset = 0
-                return .none
-                
-            case .tap:
                 return .none
                 
             case .goToMainTab:

@@ -17,11 +17,7 @@ public struct RootView: View {
     public let store: StoreOf<RootStore>
     
     let onboardingStore: StoreOf<OnboardingStore> = StoreOf<OnboardingStore>(
-        initialState: OnboardingStore.State(
-            currentStep: 0,
-            dragOffset: 0,
-            isLastStep: false
-        ),
+        initialState: OnboardingStore.State(currentStep: 0, dragOffset: 0),
         reducer: { OnboardingStore()}
     )
     
