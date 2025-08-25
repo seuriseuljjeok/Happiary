@@ -1,0 +1,16 @@
+//
+//  Localizable.strings
+//  Home
+//
+//  Created by 윤희슬 on 8/11/25.
+//
+
+"HOME_TITLE" = "Happiary";
+
+"TODAY_LOG" = "오늘의 소확행";
+
+"MAIN_EMPTY_TITLE" = "아직 기록이 없어요";
+
+"SUB_EMPTY_TITLE" = "당신의 작은 행복을 하나씩 모아볼까요?";
+
+"RECORD_TODAY_LOG" = "오늘의 소확행 기록하기";
