@@ -25,6 +25,8 @@ public enum ModuleLayer: String, ModuleType {
     
     case Onboarding
     
+    case Home
+    
     public var dependencies: [TargetDependency] {
         switch self {
         case .App:
@@ -50,9 +52,10 @@ public enum ModuleLayer: String, ModuleType {
                 .project(target: "Core", path: .relativeToRoot("Projects/Core")),
                 .project(target: "DesignSystem", path: .relativeToRoot("Projects/DesignSystem")),
                 .project(target: "Onboarding", path: .relativeToRoot("Projects/Feature/Onboarding")),
+                .project(target: "Home", path: .relativeToRoot("Projects/Feature/Home")),
             ]
             
-        case .Onboarding:
+        case .Onboarding, .Home:
             return [
                 .external(name: "ComposableArchitecture"),
                 .project(target: "Core", path: .relativeToRoot("Projects/Core")),
