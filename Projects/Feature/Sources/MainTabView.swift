@@ -9,7 +9,7 @@ import SwiftUI
 
 import ComposableArchitecture
 import DesignSystem
-import Onboarding
+import Home
 
 
 public struct MainTabView: View {
@@ -34,6 +34,9 @@ public struct MainTabView: View {
                     // content
                     selectedTabView(viewStore)
                     
+                    Divider()
+                        .customeDividerStyle(horizontalPadding: 0, color: .dividerCoral)
+                    
                     // tabbar
                     tabView(viewStore)
                 }
@@ -46,32 +49,23 @@ public struct MainTabView: View {
         // branching the screen to be displayed depending on tab status
         Group {
             // TODO: - change to the view corresponding to each tab
-//            switch viewStore.state.selectedTab {
-//            case .home:
-//                IfLetStore(self.store.scope(state: \.home, action: { .home($0) })) {
-//                    HomeView(store: $0)
-//                }
-//            case .log:
-//                IfLetStore(self.store.scope(state: \.log, action: { .log($0) })) {
-//                    LogView(store: $0)
-//                }
-//
-//            case .archive:
-//                IfLetStore(self.store.scope(state: \.archive, action: { .archive($0) })) {
-//                    ArchiveView(store: $0)
-//                }
-//
-//            case .setting:
-//                IfLetStore(self.store.scope(state: \.setting, action: { .setting($0) })) {
-//                    SettingView(store: $0)
-//                }
-//            }
+            switch viewStore.state.selectedTab {
+            case .home:
+                IfLetStore(self.store.scope(state: \.home, action: { .home($0) })) {
+                    HomeView(store: $0)
+                }
+                
+            default:
+                IfLetStore(self.store.scope(state: \.home, action: { .home($0) })) {
+                    HomeView(store: $0)
+                }
+            }
         }
     }
     
     @ViewBuilder
     private func tabView(_ viewStore: ViewStoreOf<TabStore>) -> some View {
-        HStack(alignment: .center, spacing: 12) {
+        HStack(alignment: .center) {
             ForEach(Tab.allCases, id: \.self) { tab in
                 let isSelected = viewStore.selectedTab == tab
                 let icon = isSelected ? tab.selectedIcon : tab.unselectedIcon
@@ -86,8 +80,7 @@ public struct MainTabView: View {
             }
         }
         .background(Color.tabBarBg)
-        .padding(.horizontal, 20)
-        .padding(.top, 10)
+        .padding(.top, 20)
     }
     
 }

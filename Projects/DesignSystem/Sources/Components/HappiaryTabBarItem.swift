@@ -31,19 +31,18 @@ public struct HappiaryTabBarItem: View {
     }
     
     public var body: some View {
-        VStack(alignment: .center, spacing: 7) {
+        VStack(alignment: .center, spacing: 12) {
             icon
                 .customImageStyle(width: 18, height: 18)
             
             Text(title)
                 .customTextStyle(
                     alignment: .center,
-                    fontSize: 12,
-                    fontColor: isSelected ? .accentCoral : .deepBrown,
-                    padding: EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0)
+                    fontSize: 14,
+                    fontColor: isSelected ? .accentCoral : .deepBrown
                 )
         }
-        .frame(width: 75, height: 54)
+        .frame(width: 80, height: 54)
         .contentShape(Rectangle()) // expend tap area
         .onTapGesture {
             onTap()

@@ -39,5 +39,7 @@ public extension Color {
     static var tabBarBg = Color(.tabBarBg)
     
     static var modalBeige = Color(.modalBeige)
+    
+    static var dividerCoral = Color(.dividerCoral)
 
 }

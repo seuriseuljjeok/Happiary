@@ -13,6 +13,12 @@ private let targets: [Target] = [
         .init(
             dependencies: ModuleLayer.Onboarding.dependencies
         )
+    ),
+    makeModular(
+        .Home,
+        .init(
+            dependencies: ModuleLayer.Home.dependencies
+        )
     )
 ]
 
